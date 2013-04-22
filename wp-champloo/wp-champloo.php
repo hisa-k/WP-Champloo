@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP Champloo
-Plugin URI: http://www.wp-champloo.com/
-Description: 便利な機能をチャンプルーにしました。
+Plugin URI: http://github.com/hisa-k/WP-Champloo
+Description: Webクリエイター向けに便利な機能をチャンプルーしました
 Author: hisa-k
 Version: 0.1
-Author URI: http://www.wp-champloo.com/
+Author URI: http://hm-blog.jugem.jp/
 */
 
 include('inc/functions.php');
@@ -23,7 +23,7 @@ class Wp_Champloo{
 
 	/**
 	* @function remove_actions
-	* @desc wp_headから項目を削除
+	* @desc ヘッダに出力される項目を削除する
 	* @return void
 	*/
 	public function remove_actions(){
@@ -37,7 +37,7 @@ class Wp_Champloo{
 
 	/**
 	* @function set_class_lightbox
-	* @desc classを追加
+	* @desc 投稿記事内にある画像のa要素に対し、クラス「lightbox」を自動付与する
 	* @return string
 	*/
 	public function set_class_lightbox($content){
@@ -51,7 +51,7 @@ class Wp_Champloo{
 
 	/**
 	* @function set_rewrite_rule
-	* @desc rel属性を追加
+	* @desc カスタム投稿タイプ（月別アーカイブ）のリライトルールを追加する
 	* @return void
 	*/
 	public function set_rewrite_rule(){
@@ -69,12 +69,13 @@ class Wp_Champloo{
 				$slug = $post_type_obj->has_archive;
 			}
 
+			//year
 			add_rewrite_rule('([0-9]{4})/'.$slug.'/?$', 'index.php?year=$matches[1]&post_type='.$post_type, 'top');
 			add_rewrite_rule('([0-9]{4})/page/?([0-9]{1,})/'.$slug.'/?$', 'index.php?year=$matches[1]&paged=$matches[2]&post_type='.$post_type, 'top');
-
+			//month
 			add_rewrite_rule('([0-9]{4})/([0-9]{1,2})/'.$slug.'/?$', 'index.php?year=$matches[1]&monthnum=$matches[2]&post_type='.$post_type, 'top');
 			add_rewrite_rule('([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/'.$slug.'/?$', 'index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]&post_type='.$post_type, 'top');
-
+			//day
 			add_rewrite_rule('([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/'.$slug.'/?$', 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&post_type='.$post_type, 'top');
 			add_rewrite_rule('([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/'.$slug.'/?$', 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]&post_type='.$post_type, 'top');
 		}
