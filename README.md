@@ -26,6 +26,15 @@ WP-Champlooでは以下の機能を提供します。
 * 投稿記事内にある画像のa要素に対し、クラス「lightbox」を自動付与
 * カスタム投稿タイプ（月別アーカイブ）のリライトルールを追加
 
+```text
+http://xxxx.xxx/2013/post_type/
+http://xxxx.xxx/2013/page/2/post_type/
+http://xxxx.xxx/2013/04/post_type/
+http://xxxx.xxx/2013/04/page/2/post_type/
+http://xxxx.xxx/2013/04/10/post_type/
+http://xxxx.xxx/2013/04/10/page/2/post_type/
+```
+
 ## 関数
 WP-Champlooでは以下の関数を提供します。
 
