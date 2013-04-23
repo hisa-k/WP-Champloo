@@ -47,9 +47,9 @@ WP-Champlooでは以下の関数を提供します。
 * **get_post_type_year_link**（カスタム投稿タイプの年別アーカイブページへのURLを取得する関数）
 * **get_post_type_month_link**（カスタム投稿タイプの月別アーカイブページへのURLを取得する関数）
 * **get_pagination**（ページネーション関数）
-* **get_trim_str**（文字数を指定して取得する関数）
+* **[get_trim_str](http://qiita.com/items/cb96565068426e261690)**（文字数を指定して取得する関数）
 * **in_parent_category**（指定したカテゴリに所属するのかを調べる関数）
-* **in_parent_page**（指定したページに所属するのかを調べる関数）
+* **[in_parent_page](http://qiita.com/items/568212c387a36f90ca66)**（指定したページに所属するのかを調べる関数）
 * **in_expiry_date**（投稿が有効期間内にあるのかを調べる関数）
 
 ## インストール
