@@ -38,10 +38,12 @@ http://xxxx.xxx/2013/04/10/page/2/post_type/
 ## 関数
 WP-Champlooでは以下の関数を提供します。
 
-* wp_get_archivesを配列で取得する関数
-  **get_archives_array**
-* ページネーション関数 **get_pagination**
-* 文字数を指定して取得する関数 **get_trim_str**
+* **[get_archives_array](http://qiita.com/items/b26d0b466c0274fd085a)**
+  wp_get_archivesを配列で取得する関数
+* **get_pagination**
+  ページネーション関数 
+* **get_trim_str**
+  文字数を指定して取得する関数 
 * 指定したカテゴリに所属するのかを調べる関数 **in_parent_category**
 * 指定したページに所属するのかを調べる関数 **in_parent_page**
 * 投稿が有効期間内にあるのかを調べる関数 **in_expiry_date**
