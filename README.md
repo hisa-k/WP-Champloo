@@ -38,7 +38,8 @@ http://xxxx.xxx/2013/04/10/page/2/post_type/
 ## 関数
 WP-Champlooでは以下の関数を提供します。
 
-* wp_get_archivesを配列で取得する関数 **get_archives_array**
+* wp_get_archivesを配列で取得する関数
+**get_archives_array**
 * ページネーション関数 **get_pagination**
 * 文字数を指定して取得する関数 **get_trim_str**
 * 指定したカテゴリに所属するのかを調べる関数 **in_parent_category**
@@ -48,6 +49,9 @@ WP-Champlooでは以下の関数を提供します。
 ## インストール
 ZIPファイルをダウンロード後、解凍し「wp-champloo」フォルダを「wp-content/plugins」ディレクトリにアップロードします。
 
-## 使い方
-準備中
-http://qiita.com/users/hisa_k
+## 動作環境
+WordPress 3.5.1
+
+## ライセンス
+商用・非商用を問わず無償で利用することが出来ます。
+但し、当プラグインを利用した事により生じたいかなる不都合、トラブル、損失および損害等についていかなる損害についても責任を負いませんのでご了承ください。
