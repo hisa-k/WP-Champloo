@@ -38,6 +38,10 @@ if(!function_exists('get_archives_array')){
 			}
 
 			$post_type = join("', '", $post_type_ary); 
+		}else{
+			if(!post_type_exists($post_type)){
+				return false;
+  			}
 		}
 		if($period == ''){
 			$period = 'monthly';
@@ -74,11 +78,105 @@ if(!function_exists('get_archives_array')){
 		if($arcresults){
 			$output = (array)$arcresults;
 		}
-	
+
+		if(empty($output)){
+			return false;
+		}
+
 		return $output;
 	}
 }
 
+/**
+* @function get_post_type_year_link
+* @param post_type(string) / year(Y)
+* @return string
+*/
+if(!function_exists('get_post_type_year_link')){
+	function get_post_type_year_link($post_type, $year = ''){
+		global $wp_rewrite;
+
+		$post_type_obj = get_post_type_object($post_type);
+		if(!$post_type_obj){
+			return false;
+		}
+		if(!$post_type_obj->has_archive){
+			return false;
+		}
+
+		if(!$year){
+			$year = gmdate('Y', current_time('timestamp'));
+		}
+
+		if(get_option('permalink_structure') && is_array($post_type_obj->rewrite)){
+			if($post_type_obj->has_archive === true){
+				$struct = $year.'/'.$post_type_obj->rewrite['slug'];
+			}else{
+				$struct = $year.'/'.$post_type_obj->has_archive;
+			}
+
+			if($post_type_obj->rewrite['with_front']){
+				$struct = $wp_rewrite->front.$struct;
+			}else{
+				$struct = $wp_rewrite->root.$struct;
+			}
+
+			$link = home_url(user_trailingslashit($struct, 'post_type_archive'));
+		}else{
+			$link = home_url('?year='.$year.'&post_type='.$post_type);
+		}
+
+		return apply_filters('post_type_year_link', $link, $post_type);
+	}
+}
+
+/**
+* @function get_post_type_month_link
+* @param post_type(string) / year(Y)
+* @return string
+*/
+if(!function_exists('get_post_type_month_link')){
+	function get_post_type_month_link($post_type, $year = '', $month = ''){
+		global $wp_rewrite;
+
+		$post_type_obj = get_post_type_object($post_type);
+		if(!$post_type_obj){
+			return false;
+		}
+		if(!$post_type_obj->has_archive){
+			return false;
+		}
+
+		if(!$year){
+			$year = gmdate('Y', current_time('timestamp'));
+		}
+
+		if(!$month){
+			$month = gmdate('m', current_time('timestamp'));
+		}
+		$month = zeroise(intval($month), 2);
+
+		if(get_option('permalink_structure') && is_array($post_type_obj->rewrite)){
+			if($post_type_obj->has_archive === true){
+				$struct = $year.'/'.$month.'/'.$post_type_obj->rewrite['slug'];
+			}else{
+				$struct = $year.'/'.$month.'/'.$post_type_obj->has_archive;
+			}
+	
+			if($post_type_obj->rewrite['with_front']){
+				$struct = $wp_rewrite->front.$struct;
+			}else{
+				$struct = $wp_rewrite->root.$struct;
+			}
+	
+			$link = home_url(user_trailingslashit($struct, 'post_type_archive'));
+		}else{
+			$link = home_url('?year='.$year.'&month='.$month.'&post_type='.$post_type);
+		}
+	
+		return apply_filters('post_type_year_link', $link, $post_type);
+	}
+}
 
 /**
 * @function get_pagination
@@ -103,7 +201,7 @@ if(!function_exists('get_pagination')){
 			if($paged > 1){
 				$output .= '<li class="prev"><a href="'.get_pagenum_link($paged-1).'">前のページ</a></li>';
 			}else{
-				$output .= '<li class="prev">&#171; 前のページ</li>';
+				$output .= '<li class="prev">前のページ</li>';
 			}
 	
 			for($i=1; $i<=$pages; $i++){
@@ -117,15 +215,14 @@ if(!function_exists('get_pagination')){
 			if($paged < $pages){
 				$output .= '<li class="next"><a href="'.get_pagenum_link($paged+1).'">次のページ</a></li>';
 			}else{
-				$output .= '<li class="next">次のページ &#187;</li>';
+				$output .= '<li class="next">次のページ</li>';
 			}
-			$output .= '</ul>'."\n";
+			$output .= '</ul>';
 		}
 
 		return $output;
 	}
 }
-
 
 /**
 * @function get_trim_str
