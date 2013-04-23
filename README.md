@@ -1,11 +1,11 @@
 # WP-Champloo
 
-WP-ChamplooはWebクリエイター向けに便利な機能をチャンプルーしたプラグインです。
+WP-Champlooは、Webクリエイター向けに便利な機能・関数をチャンプルーしたプラグインです。
 
 ## 機能
 WP-Champlooでは以下の機能を提供します。
 
-* ヘッダに出力される以下の項目を削除
+* ヘッダに出力される以下の項目を削除します。
 
 ```html
 <link rel="alternate" type="application/rss+xml" title="サイト名-フィード" href="http://xxxx.xxx/feed/" />
@@ -23,10 +23,15 @@ WP-Champlooでは以下の機能を提供します。
 <link rel='shortlink' href='http://xxxx.xxx/?p=xx' />
 ```
 
-* 投稿記事内にある画像のa要素に対し、クラス「lightbox」を自動付与
-* カスタム投稿タイプ（月別アーカイブ）のリライトルールを追加
+* 投稿記事内にある画像のa要素に対し、クラス「lightbox」を自動付与します。
 
-```text
+```html
+<a href="http://xxxx.xxx/uploads/xxxx.jpg" class="lightbox" title="xxxx"><img width="xxx" height="xxx" src="xxxx.jpg" class="attachment-thumbnail" alt="xxxx" title="xxxx" /></a>
+```
+
+* カスタム投稿タイプ（月別アーカイブ）のリライトルールを追加します。
+
+```html
 http://xxxx.xxx/2013/post_type/
 http://xxxx.xxx/2013/page/2/post_type/
 http://xxxx.xxx/2013/04/post_type/
